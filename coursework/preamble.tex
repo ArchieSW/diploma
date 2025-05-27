@@ -14,7 +14,7 @@
 \usepackage{subcaption}
 \usepackage{listings}
 \usepackage{indentfirst}
-\usepackage[colorlinks,citecolor=blue,linkcolor=blue,bookmarks=false,hypertexnames=true, urlcolor=blue]{hyperref} 
+\usepackage[colorlinks,citecolor=blue,linkcolor=blue,bookmarks=false,hypertexnames=true, urlcolor=blue]{hyperref}
 \usepackage{indentfirst}
 \usepackage{mathtools}
 \usepackage{booktabs}
@@ -39,7 +39,7 @@
 
 
 \newcommand{\bibref}[3]{\hyperlink{#1}{#2 (#3)}} % biblabel, authors, year
-\addto\captionsrussian{\def\refname{Список литературы (или источников)}} 
+\addto\captionsrussian{\def\refname{Список литературы (или источников)}}
 
 \renewcommand{\theenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
 \renewcommand{\labelenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
@@ -47,3 +47,61 @@
 \renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}% Меняем везде перечисления на цифра.цифра
 \renewcommand{\theenumiii}{.\arabic{enumiii}}% Меняем везде перечисления на цифра.цифра
 \renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}% Меняем везде перечисления на цифра.цифра
+
+
+% Команда для титульного листа
+\newcommand{\maketitlekrvkr}[9]{%
+% 1: тип работы (КР или ВКР)
+% 2: ФИО автора
+% 3: тема работы
+% 4: направление подготовки
+% 5: образовательная программа
+% 6: факультет
+% 7: рецензент (оставить {} если нет)
+% 8: руководитель (оставить {} если нет)
+% 9: город и год (например: Нижний Новгород, 2025)
+
+\begin{center}
+\setstretch{1.2}
+ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ\\
+АВТОНОМНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ\\
+ВЫСШЕГО ОБРАЗОВАНИЯ\\
+«НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ\\
+«ВЫСШАЯ ШКОЛА ЭКОНОМИКИ»\\[1ex]
+\textit{#6}\\[4ex] % Факультет
+
+\textit{#2}\\[3ex] % ФИО автора курсивом
+
+\textbf{#3}\\[2ex] % Название темы
+
+\ifthenelse{\equal{#1}{КР}}{%
+Курсовая работа%
+}{%
+Выпускная квалификационная работа -- БАКАЛАВРСКАЯ РАБОТА%
+}\\
+по направлению подготовки #4\\
+образовательная программа\\
+«#5»\\[6ex]
+
+% Нижняя часть с рецензентом и руководителем
+\noindent
+\begin{minipage}[t]{0.49\textwidth}
+\raggedright
+\ifthenelse{\equal{#7}{}}{}{%
+Рецензент\\
+#7\\[6ex]
+}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\raggedleft
+\ifthenelse{\equal{#8}{}}{}{%
+Руководитель\\
+#8\\[6ex]
+}
+\end{minipage}
+
+\vfill
+#9
+\end{center}
+}

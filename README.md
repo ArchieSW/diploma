@@ -12,9 +12,19 @@
 
 > Файл: `slides.tex`
 
-Презентацию тоже удобно делать в LaTeX. Для этого можно использовать класс `beamer`. Примеры презентаций этого класса: 
+Презентацию тоже удобно делать в LaTeX. Для этого можно использовать класс `beamer`. Примеры презентаций этого класса:
 
 1. https://www.overleaf.com/learn/latex/beamer
 2. https://www.latextemplates.com/template/beamer-presentation
 
 Для отрисовки схем и архитектур удобно использовать этот [tool](https://excalidraw.com).
+
+## Сборка курсовой и презентации
+1. Github Actions:
+Сборка происходит автоматически при push в master. Готовые файлы будут доступны в артифактах к сборке
+2. Локально:
+Можно использовать [act](https://github.com/nektos/act) для сборки локально:
+```
+act push --artifact-server-path $PWD/.artifacts
+```
+Готовые файлы будут лежать в директории `.artifacts`
